@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import queryString from "query-string";
 
 import SpotifyWebApi from "spotify-web-api-js";
 const spotifyApi = new SpotifyWebApi();
@@ -8,14 +9,19 @@ class App extends Component {
   constructor() {
     console.log("sadsadsa");
     super();
-    const params = this.getHashParams();
-    const token = params.access_token;
+    // const params = this.getHashParams();
+    // const token = params.access_token;
+
+    let parsed = queryString.parse(window.location.search);
+    let token = parsed.access_token;
+
     if (token) {
       spotifyApi.setAccessToken(token);
       console.log("logged in");
     } else {
       console.log("epic fail");
     }
+
     this.state = {
       loggedIn: token ? true : false,
       nowPlaying: { name: "Not Checked", albumArt: "" },
@@ -25,18 +31,18 @@ class App extends Component {
     };
   }
 
-  getHashParams() {
-    var hashParams = {};
-    var e,
-      r = /([^&;=]+)=?([^&;]*)/g,
-      q = window.location.hash.substring(1);
-    e = r.exec(q);
-    while (e) {
-      hashParams[e[1]] = decodeURIComponent(e[2]);
-      e = r.exec(q);
-    }
-    return hashParams;
-  }
+  // getHashParams() {
+  //   var hashParams = {};
+  //   var e,
+  //     r = /([^&;=]+)=?([^&;]*)/g,
+  //     q = window.location.hash.substring(1);
+  //   e = r.exec(q);
+  //   while (e) {
+  //     hashParams[e[1]] = decodeURIComponent(e[2]);
+  //     e = r.exec(q);
+  //   }
+  //   return hashParams;
+  // }
 
   // getNowPlaying() {
   //   spotifyApi.getMyCurrentPlaybackState().then((response) => {
@@ -98,7 +104,7 @@ class App extends Component {
     }
     return albumList;
   };
-
+  // href="http://myspotifylistbackend.herokuapp.com/login"
   render() {
     return (
       <div className="App">
@@ -106,10 +112,7 @@ class App extends Component {
         {this.state.loggedIn && (
           <button onClick={() => this.getSaved()}>Check Saved Albums</button>
         )}
-        <a
-          href="http://myspotifylistbackend.herokuapp.com/login"
-          style={{ marginLeft: 500 }}
-        >
+        <a href="http://localhost:8888/login" style={{ marginLeft: 500 }}>
           {" "}
           Login to Spotify{" "}
         </a>
