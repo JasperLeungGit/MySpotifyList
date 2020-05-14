@@ -17,13 +17,19 @@ class App extends Component {
     // this.setState({ token });
 
     if (token) {
-      spotifyApi.setAccessToken(token);
-      this.getSaved();
       console.log("logged in");
-      console.log(token);
-    } else {
-      console.log("epic fail");
     }
+
+    spotifyApi.setAccessToken(token);
+
+    // if (token) {
+    //   spotifyApi.setAccessToken(token);
+    //   this.getSaved();
+    //   console.log("logged in");
+    //   console.log(token);
+    // } else {
+    //   console.log("epic fail");
+    // }
 
     this.state = {
       loggedIn: token ? true : false,
@@ -45,17 +51,6 @@ class App extends Component {
   //     e = r.exec(q);
   //   }
   //   return hashParams;
-  // }
-
-  // getNowPlaying() {
-  //   spotifyApi.getMyCurrentPlaybackState().then((response) => {
-  //     this.setState({
-  //       nowPlaying: {
-  //         name: response.item.name,
-  //         albumArt: response.item.album.images[0].url,
-  //       },
-  //     });
-  //   });
   // }
 
   getSaved = () => {
