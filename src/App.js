@@ -103,7 +103,7 @@ class App extends Component {
         {this.state.loggedIn && (
           <button onClick={() => this.getSaved()}>Check Saved Albums</button>
         )}
-        <a href="http://localhost:8888" style={{ marginLeft: 500 }}>
+        <a href="http://authspotify.herokuapp.com" style={{ marginLeft: 500 }}>
           {" "}
           Login to Spotify{" "}
         </a>
