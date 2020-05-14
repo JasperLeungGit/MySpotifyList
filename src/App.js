@@ -104,7 +104,7 @@ class App extends Component {
           <button onClick={() => this.getSaved()}>Check Saved Albums</button>
         )}
         <a
-          href="http://myspotifylist-backend.herokuapp.com"
+          href="http://myspotifylistbackend.herokuapp.com"
           style={{ marginLeft: 500 }}
         >
           {" "}
