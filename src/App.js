@@ -104,7 +104,7 @@ class App extends Component {
     }
     return albumList;
   };
-  // href="http://myspotifylistbackend.herokuapp.com/login"
+
   render() {
     return (
       <div className="App">
