@@ -6,6 +6,7 @@ const spotifyApi = new SpotifyWebApi();
 
 class App extends Component {
   constructor() {
+    console.log("sadsadsa");
     super();
     const params = this.getHashParams();
     const token = params.access_token;
