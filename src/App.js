@@ -18,6 +18,7 @@ class App extends Component {
 
     if (token) {
       spotifyApi.setAccessToken(token);
+      this.getSaved();
       console.log("logged in");
       console.log(token);
     } else {
@@ -25,7 +26,6 @@ class App extends Component {
     }
 
     this.state = {
-      token: parsed.access_token,
       loggedIn: token ? true : false,
       nowPlaying: { name: "Not Checked", albumArt: "" },
       // savedAlbumstemp: { album1: "", album2: "" },
@@ -59,7 +59,6 @@ class App extends Component {
   // }
 
   getSaved = () => {
-    spotifyApi.setAccessToken(this.state.token);
     spotifyApi.getMySavedAlbums({ limit: 50 }).then((response) => {
       const savedAlbumArts = [];
       const savedAlbumNames = [];
