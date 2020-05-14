@@ -13,6 +13,8 @@ class App extends Component {
     if (token) {
       spotifyApi.setAccessToken(token);
       console.log("logged in");
+    } else {
+      console.log("epic fail");
     }
     this.state = {
       loggedIn: token ? true : false,
