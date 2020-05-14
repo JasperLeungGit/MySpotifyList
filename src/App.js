@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
 import queryString from "query-string";
-
 import SpotifyWebApi from "spotify-web-api-js";
+
 const spotifyApi = new SpotifyWebApi();
 
 class App extends Component {
@@ -15,12 +15,12 @@ class App extends Component {
     let parsed = queryString.parse(window.location.search);
     let token = parsed.access_token;
     // this.setState({ token });
-
+    console.log(token);
     if (token) {
+      spotifyApi.setAccessToken(token);
+      this.getSaved(token);
       console.log("logged in");
     }
-
-    spotifyApi.setAccessToken(token);
 
     // if (token) {
     //   spotifyApi.setAccessToken(token);
@@ -33,8 +33,6 @@ class App extends Component {
 
     this.state = {
       loggedIn: token ? true : false,
-      nowPlaying: { name: "Not Checked", albumArt: "" },
-      // savedAlbumstemp: { album1: "", album2: "" },
       savedAlbumArts: [],
       savedAlbumNames: [],
     };
@@ -53,7 +51,8 @@ class App extends Component {
   //   return hashParams;
   // }
 
-  getSaved = () => {
+  getSaved = (token) => {
+    spotifyApi.setAccessToken(token);
     spotifyApi.getMySavedAlbums({ limit: 50 }).then((response) => {
       const savedAlbumArts = [];
       const savedAlbumNames = [];
@@ -108,7 +107,9 @@ class App extends Component {
       <div className="App">
         <body>{this.renderAlbums()}</body>
         {this.state.loggedIn && (
-          <button onClick={() => this.getSaved()}>Check Saved Albums</button>
+          <button onClick={() => this.getSaved(this.state.token)}>
+            Check Saved Albums
+          </button>
         )}
         <a
           href="http://myspotifylistbackend.herokuapp.com/login"
