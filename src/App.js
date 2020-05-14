@@ -9,16 +9,15 @@ class App extends Component {
   constructor() {
     console.log("sadsadsa");
     super();
-    // const params = this.getHashParams();
-    // const token = params.access_token;
+    const params = this.getHashParams();
+    const token = params.access_token;
 
-    let parsed = queryString.parse(window.location.search);
-    let token = parsed.access_token;
-    // this.setState({ token });
+    // let parsed = queryString.parse(window.location.search);
+    // let token = parsed.access_token;
+
     console.log(token);
     if (token) {
       spotifyApi.setAccessToken(token);
-      this.getSaved(token);
       console.log("logged in");
     }
 
@@ -38,21 +37,20 @@ class App extends Component {
     };
   }
 
-  // getHashParams() {
-  //   var hashParams = {};
-  //   var e,
-  //     r = /([^&;=]+)=?([^&;]*)/g,
-  //     q = window.location.hash.substring(1);
-  //   e = r.exec(q);
-  //   while (e) {
-  //     hashParams[e[1]] = decodeURIComponent(e[2]);
-  //     e = r.exec(q);
-  //   }
-  //   return hashParams;
-  // }
+  getHashParams() {
+    var hashParams = {};
+    var e,
+      r = /([^&;=]+)=?([^&;]*)/g,
+      q = window.location.hash.substring(1);
+    e = r.exec(q);
+    while (e) {
+      hashParams[e[1]] = decodeURIComponent(e[2]);
+      e = r.exec(q);
+    }
+    return hashParams;
+  }
 
-  getSaved = (token) => {
-    spotifyApi.setAccessToken(token);
+  getSaved = () => {
     spotifyApi.getMySavedAlbums({ limit: 50 }).then((response) => {
       const savedAlbumArts = [];
       const savedAlbumNames = [];
@@ -94,25 +92,26 @@ class App extends Component {
             <option value="1">1</option>
           </select>
           <textarea id="w3mission" rows="4" cols="50"></textarea>
-          {/* <input type="text" id="comments" name="comments" /> */}
           <body style={{ width: 200 }}>{this.state.savedAlbumNames[i]}</body>
         </div>
       );
     }
     return albumList;
   };
+  // {/* <a
+  //           href="http://myspotifylistbackend.herokuapp.com/login"
+  //           style={{ marginLeft: 500 }}
+  //         ></a> */}
 
   render() {
     return (
       <div className="App">
         <body>{this.renderAlbums()}</body>
         {this.state.loggedIn && (
-          <button onClick={() => this.getSaved(this.state.token)}>
-            Check Saved Albums
-          </button>
+          <button onClick={() => this.getSaved()}>Check Saved Albums</button>
         )}
         <a
-          href="http://myspotifylistbackend.herokuapp.com/login"
+          href="http://spotlist-backend.herokuapp.com"
           style={{ marginLeft: 500 }}
         >
           {" "}
