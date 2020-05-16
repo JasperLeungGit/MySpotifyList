@@ -3,41 +3,6 @@
   margin: 10px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 /* div {
   margin: 10px;
 } */
@@ -46,20 +11,27 @@ select {
   text-align: center;
   border: 0px;
   outline: 0px;
-  margin-left: 100px;
-  height: 200px;
-  width: 200px;
-  font-size: 150px;
+  position: absolute;
+  left: 22%;
+  /* height: 65%;
+  width: 15%; */
+  font-size: 10em;
   font-weight: bold;
   font-style: "Roboto";
+  color: aquamarine;
+  -webkit-text-stroke-width: 5px;
+  -webkit-text-stroke-color: #74a7b2;
   float: "left";
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
 }
 
 option {
   text-align: center;
-  font-size: 12px;
-  height: 10px;
-  line-height: 10px;
+  font-size: 0.1em;
+  color: black;
 }
 
 button {
@@ -67,11 +39,109 @@ button {
 }
 
 textarea {
-  margin-left: 200px;
-  font-family: "Roboto";
+  border-color: aquamarine;
+  border-width: 0em;
+  margin-top: 3%;
+  position: absolute;
+  left: 40%;
+  font-family: "Helvetica", "Arial", sans-serif;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 1.5em;
 }
+
+.mainheader {
+  margin: -10px;
+  text-indent: 10px;
+  height: 50px;
+  width: 101.3%;
+  -webkit-text-stroke-width: 1.5px;
+  -webkit-text-stroke-color: #74a7b2;
+  background-color: aquamarine;
+  color: white;
+  font-style: italic;
+}
+
+a {
+  font-size: 14px;
+  font-weight: bold;
+  position: absolute;
+  left: 45%;
+  top: 50%;
+}
+
+p {
+  width: 14%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* number of lines to show */
+  -webkit-box-orient: vertical;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+h1 {
+  margin-right: 14%;
+}
+
+.topnav {
+  margin-top: 10px;
+  margin-left: -10px;
+  width: 101.3%;
+  height: 50px;
+  overflow: hidden;
+  background-color: #e9e9e9;
+}
+
+/* Style the links inside the navigation bar
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+} */
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Style the "active" element to highlight the current page */
+.topnav a.active {
+  background-color: #2196f3;
+  color: white;
+}
+
+/* Style the search box inside the navigation bar */
+.topnav input[type="text"] {
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-left: 10px;
+  font-size: 17px;
+}
+
+.addbutton {
+  margin-left: 200px;
+}
+
+.deletebutton {
+  margin-left: 80%;
+  margin-top: 3%;
+}
+
+.searchbutton2 {
+  margin-left: 1%;
+}
+
+.tabbutton {
+  margin-top: 1%;
+}
+
 /* input {
   height: 200px;
   width: 800px;
