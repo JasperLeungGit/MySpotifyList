@@ -39,8 +39,8 @@ button {
 }
 
 textarea {
-  border-color: aquamarine;
-  border-width: 0em;
+  border-color: black;
+  border-width: 0.1em;
   margin-top: 3%;
   position: absolute;
   left: 40%;
